@@ -1,0 +1,35 @@
+<button (click)="handleAddMenu()">Add Menu</button>
+
+@if (flag) {
+<app-form></app-form>
+}
+
+@if (editFlag) {
+<app-update-form [data]="updateFormDetails"></app-update-form>
+}
+
+<h1>List of All Menus</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price (₹)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let menu of menus">
+            <td>{{ menu.id }}</td>
+            <td>{{ menu.name }}</td>
+            <td>{{ menu.description }}</td>
+            <td>{{ menu.price }}</td>
+            <td>
+                <button (click)="editMenu(menu)">Edit</button>
+                <button (click)="deleteMenu(menu.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
